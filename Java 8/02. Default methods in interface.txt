@@ -1,0 +1,563 @@
+Default methods in interface
+-----------------------------
+
+1) here default means not AM default
+
+2) here default means method implementation body
+
+3) Upto Java 7v, in an interface we can only create abstract methods 
+
+4) from Java 8v onwards we can also create a method with implementation body
+
+    with default logic common to all implementation classes of this interface
+
+5) What is default method and how can we create default method? 
+
+Default Method interface : A method that is created inside an interface with default implementation body is called default method.
+We must declare default method with the modifier keyword default and ends with {}, 
+
+Rule: If we add {} to method declaration,
+    we must use default modifier else compiler will throw error.
+
+6) syntax:
+    public default RT MN(PL) throws EL{
+        .....
+        .....
+        .....
+    }
+
+    Note: public is optional, compiler adds it by default every in interface is public.
+
+    //Example.java
+    interface Example{
+        void m1();
+
+        // java 8 onwards 
+        default void m2(){
+
+        }
+    }
+
+    //Example.class
+    interface Example{
+        public abstract void m1();
+        public default void m2(){ }
+    }
+
+
+    interface Example{
+        void m1(); // here no error, compiler will add public and abstract
+
+        void m2(){} CE: interface abstract methods can not have body
+    }
+
+7. Need of default method?
+
+//for adding new methods in interface without forcing implementing these methods in sub classes. default method concept is introduced in interface.
+
+// Upto java 7v if we want to add new functionality to an existing object
+// we must add a new method which is representing this new functionality
+// in the existing interface . Then it forces implementation classes to implement this new functionality method it is not a good approach because the implementation class business man may not interested to provide this feature with his object.
+
+// Solution is we must create new interface deriving from this existing interface and then in this new interface we must declare this new functionality method as shown below. So that whichever the implementation class programmer wants providing implementation to this feature he/she will implement.
+
+
+    interface SIM{                  
+        void call();
+        void sms();
+    }
+
+    interfaces SIM2G extends SIM{
+        void netConnection();
+    }
+
+    class Airtel implements SIM{
+        public void call(){}
+        public void sms() {}
+    }
+
+
+    class BSNL implements SIM{
+        public void call(){}
+        public void sms() {}
+    }
+
+    class Airtel2G extends Airtel implements SIM2G{
+        public void netConnection(){ }
+    }
+
+    // problem in this approach is number of interfaces and number of implementation classes are increasing thereby number of .java files and number of .class files are increasing there by as a programmer we must remember many interfaces names and classes names. and also problem is the project size is increased and need more JVM memory for loading and storing those many classes and interfaces.
+
+    // solution to this problem is Java 8 new feature default methods
+
+    because we are creating new feature by using an abstract method implementation class programmer is forced to implement this method , if we create this method by implementation body implementation class programmer no need to implement this method immediately.
+
+    Whenever he/she is ready to support this functionality that time, he/she implements this method and supports this functionality.
+
+    // for making/ implementation class programmers free from implementing interface methods default method concept is introduced to interface.
+
+    // for adding new methods in interface without forcing implementing those method in subclasses default method concept is introduced.
+
+
+
+8) implementing an abstract method is mandatory in its implementation classes  implementing a default method in subclass is optional 
+
+for executing a default method given in interface, we must invoking by using one of its implementation class object.
+
+    interface Test{
+        void m1();
+        default void m2(){
+            System.out.println("Test m1");
+
+        }
+    }
+
+    class Sample implements Test{
+        @Override
+        public void m1(){
+            System.out.println("Sample m1");
+        }
+        
+        @Override
+        public void m2(){
+            System.out.println("Sample m2");
+        }
+    };
+
+    class Example{
+        public static void main(String[] args) {
+            Test t1 = new Sample();
+            t1.m1();
+            t1.m2();
+        }
+    };
+
+
+
+9) Like abstract method we can also implement default methods in implementation classes with implementation class required logic. then in order to this default method logic from this implementation class we must  invoke this default method by using implementation class object.
+
+      interface Test{
+        void m1();
+        default void m2(){
+            System.out.println("Test m2");
+
+        }
+    }
+
+    class Sample implements Test{
+        @Override
+        public void m1(){
+            System.out.println("Sample m1");
+        }
+        
+        @Override
+        public void m2(){
+            System.out.println("Sample m2");
+        }
+    };
+
+    class Example{
+        public static void main(String[] args) {
+            Test t1 = new Sample();
+            t1.m1();
+            t1.m2();
+        }
+    };
+
+
+
+
+10) When we implement interface default method in implementation class.
+
+if we need to execute this method from super interface also. we must use super keyword with new syntax as <interface name>.super.<methodname(args)>
+
+    For Eg:  Test.super.m2();
+
+    interface Test{
+        void m1();
+        default void m2(){
+            System.out.println("Test m2");
+
+        }
+    }
+
+    class Sample implements Test{
+        @Override
+        public void m1(){
+            System.out.println("Sample m1");
+            
+        }
+        
+        @Override
+        public void m2(){
+            System.out.println("Sample m2");
+            // super.m2(); // CE: because searching m2() in super Object class
+            Test.super.m2();
+        }
+    };
+
+    class Example{
+        public static void main(String[] args) {
+            Test t1 = new Sample();
+            t1.m1();
+            t1.m2();
+        }
+    };
+
+
+11) From Java 8v onwards, due to default methods, we wil get ambiguous, error while implementing multiple interfaces.
+
+When we derive a class by implementing multiple interfaces if same signature default method, exist in both interfaces, then compiler throws  below error to this implementation class.
+
+CE: class Sample inherits unrelated defaults for m2() from types Test1 and Test2
+
+we will get above CE, just deriving interfaces, no need to call method.
+
+    For Example:
+    interface Test1{
+        void m1();
+        default void m2(){
+            System.out.println("Test1 m2");
+
+        }
+    }
+    interface Test2{
+        void m1();
+        default void m2(){
+            System.out.println("Test2 m3");
+
+        }
+    }
+
+    class Sample implements Test1,Test2{
+        @Override
+        public void m1(){ }
+    };
+
+    class Example{
+        public static void main(String[] args) {
+
+        }
+    };
+
+12) Solution to above problem we must implement that default method in this implementation class so that this method is searched and executed in  implementation class hence there is no ambiguous to compiler and JVM.
+
+    interface Test1{
+        void m1();
+        default void m2(){
+            System.out.println("Test1 m2");
+
+        }
+    }
+    interface Test2{
+        void m1();
+        default void m2(){
+            System.out.println("Test2 m3");
+
+        }
+    }
+
+    class Sample implements Test1,Test2{
+        @Override
+        public void m1(){
+            System.out.println("Sample m1");
+            
+        }
+        
+        @Override
+        public void m2(){
+            System.out.println("Sample m2");
+            // super.m2(); // CE: because searching m2() in super Object class
+            // Test1.super.m2();
+        }
+    };
+
+    class Example{
+        public static void main(String[] args) {
+
+            Sample s1 = new Sample();
+            s1.m1();
+            s1.m2();
+        }
+    };
+
+    Rule : If the same signature default method is exist in multiple interfaces, we must implement that default method in this implementation class common to both interfaces, else we will get CE : class Sample inherits unrelated defaults for m2() from types Test1 and Test2
+
+    For executing default method of interface from sub class we must invoke it as shown below..
+
+    class Example{
+    public static void main(String[] args) {
+
+        Sample s1 = new Sample();
+        s1.m1(); // searching in Sample executed from Sample
+        s1.m2(); // searching in Sample executed from Sample
+
+        Test1 t1 = new Sample();
+        t1.m1(); // searching in Test1 interface executed from Sample class
+        t1.m2(); // searching in Test1 interface executed from Sample class
+
+        Test1 t2 = new Sample();
+        t2.m1(); // searching in Test2 interface executed from Sample class
+        t2.m2(); // searching in Test2 interface executed from Sample class
+         }
+    };
+    
+13) With the multiple inheritance th same signature default method is mandatory to implement in the implementation class. In this case, if we want to execute this default method logic from super interfaces, we must invoke it by using "interfacename.super"  in its implementation body in implementation class as shown below.
+
+For Example:
+
+    interface Test1{
+        void m1();
+        default void m2(){
+            System.out.println("Test1 m2");
+
+        }
+    }
+    interface Test2{
+        void m1();
+        default void m2(){
+            System.out.println("Test2 m2");
+
+        }
+    }
+
+    class Sample implements Test1,Test2{
+        @Override
+        public void m1(){
+            System.out.println("Sample m1");
+            
+        }
+        
+        @Override
+        public void m2(){
+            System.out.println("Sample m2");
+            // super.m2(); // CE: because searching m2() in super Object class
+            Test1.super.m2();
+            Test2.super.m2();
+        }
+    };
+
+    class Example{
+        public static void main(String[] args) {
+
+            Sample s1 = new Sample();
+            s1.m1(); // searching in Sample executed from Sample
+            s1.m2(); // searching in Sample executed from Sample
+
+            System.out.println();
+
+            Test1 t1 = new Sample();
+            t1.m1(); // searching in Test1 interface executed from Sample class
+            t1.m2(); // searching in Test1 interface executed from Sample class
+
+            System.out.println();
+
+            Test1 t2 = new Sample();
+            t2.m1(); // searching in Test2 interface executed from Sample class
+            t2.m2(); // searching in Test2 interface executed from Sample class
+        }
+    };
+
+
+14) In single inheritance, means if class is deriving from one interface implementing default method is optional.
+
+    In multiple inheritance, means if a class is deriving from multiple interfaces, if same signature default method is repeated is existed in all interface, we must implement this default method. If we have different signature default methods we no need to implement them in derived class.
+
+    Identify which default methods must implemented in class Sample and also Identify invoking procedure, searching and execution places.
+
+    interface Test1{
+        void m1();
+        default void m2(){
+            System.out.println("Test1 m2");
+
+    }
+
+        default void m3(){
+            System.out.println("Test1 m3");
+
+        }
+    }
+
+    interface Test2{
+        void m1();
+        default void m2(){
+            System.out.println("Test2 m2");
+
+        }
+        default void m4(){
+            System.out.println("Test2 m4");
+
+        }
+    }
+
+    class Sample implements Test1,Test2{
+        @Override
+        public void m1(){
+            System.out.println("Sample m1");
+            
+        }
+        
+        @Override
+        public void m2(){
+            System.out.println("Sample m2");
+            // super.m2(); // CE: because searching m2() in super Object class
+            Test1.super.m2();
+            Test2.super.m2();
+        }
+    };
+
+    class Example{
+        public static void main(String[] args) {
+
+            Sample s1 = new Sample();
+            s1.m1(); // searching in Sample executed from Sample
+            s1.m2(); // searching in Sample executed from Sample
+            s1.m3(); // searching in Sample,Test1 and Test3, executed from Test1
+            s1.m4(); // searching in Sample,Test1 and Test3, executed from Test2
+
+            System.out.println();
+
+            Test1 t1 = new Sample();
+            t1.m1(); // searching in Test1 interface executed from Sample class
+            t1.m2(); // searching in Test1 interface executed from Sample class
+            t1.m3(); // searching in Test1 executed from Test1 , because it is not implemented in class Sample
+            // t1.m4(); // CE
+
+            System.out.println();
+
+            Test2 t2 = new Sample();
+            t2.m1(); // searching in Test2 interface executed from Sample class
+            t2.m2(); // searching in Test2 interface executed from Sample class
+            // t2.m3(); //CE
+            t2.m4();// searching in Test2 executed from Test2 because not implemented in class Sample
+        }
+    };
+
+
+15) What is the differences between Java 9 interface and abstract class?
+    From Java 8 onwards are interface and abstract class both same?
+
+A) No, Both are not same, still whatever the differences are there in Java 7 version same number of differences are there for now also.
+
+    1) multiple inheritance point of view
+        - Abstract class does not support multiple inheritance.
+        - Still in Java 8 also interface supports multiple inheritance.
+
+    2) Members Declaration 
+        - Abstract class we can create Abstract Methods AMs , Concrete Methods CMs, Static Initializer block SIBs, Instance Initializer Block IIBs, COns,Static Methods SMs, Instance Methods IMs, SICs,MICs
+        [AMs + 10 static and non-static members]
+
+        - in interface we can create only
+            public AMs,public default implemented methods,public static methods,PSF fields, PS ICs
+
+            we can not create SVs, IVs, SIBs, IIBs,Cons,IMs,MICs.
+
+        Note: Because from Java 8v onwards in interface we can create static method from Java 8v onwards we can create main method in interface. Hence from Java 8v. 
+        like abstract class we can also execute interface by using java commands.
+
+16) Are default method and Concrete method same?
+A) Nooooooooooooooooo both are looking same but they are different
+
+    1) place to create
+        - A CM is allowed in either CC(Concrete Class)/AM(Abstract Class)/FC(Final Class)
+        - A DM is allowed only inside interface only inside interface from Java 8v onwards
+
+    2) allowed AMs 
+        - A CM (Concrete Method) can be declared as == private, default, protected and public ==
+        - But DM can be declared as only as public.
+
+    3) allowed ELMs
+        - A CM can be declared as == static final, native,synchronized, strictfp ==
+        - A DM can  "not" be declared as == static final, native,synchronized,  ==
+        - strictfp is allowed to both CM and DM because it contains logic
+
+    Note : the only allowed modifiers to DM are "public and strictfp" and ofcourse "default" to tell it is default implemented method.
+
+    4) RT(return Type) , Parameters and Exception List and logic 
+        - in this case CM and DM are same 
+        - both CM and DM can have any RT, any Parameters, any Exceptions list and logic as their functionality implementation requirement.
+
+    5) default keyword (here default is an execution level modifier like static and final)
+        - in creating CM we must not use default keyword
+        - in creating DM we must use default keyword
+
+
+17) identify CSs in the below list
+
+    interface Example3{
+    // void m1(){}; // CE: interface abstract methods canont have body, default kw is missing
+
+    default void m2(){}
+    // private default void m3(){} // CE: modifier private is not allowed here
+
+    // protected default void m3(){} // CE: modifier protected not allowed here
+    
+    public default void m5(){} // No CE 
+
+    // static default void m6(){} //CE: illegal combination of modifiers static and default
+
+    // final default void m6(){} // CE: modifier final not allowed here 
+
+    // native default void m7(){} //CE: modifiers native not allowed here
+
+    //  synchronized default void m8(){} // CE: modifiers synchronized not allowed here
+
+    strictfp default void m9(){
+        // in DM we can dp floating point (fp) 
+        //hence strictfp is allowed here
+
+        // for forcing JVM to do floating point calculations
+        // strictly by following IEEE 754 standards we must declare a method as strictfp 
+    }
+    
+    default void m10(){}
+    default int m1(){return 5;}
+    default int[] m12(){return new int[5];}
+    default String m13(){return "SK";}
+    default String[] m14(){return new String[]{"SK","PK"};}
+    default Sample m15() {return new Sample();}
+    default Sample[] m16() {return new Sample[]{new Sample(),new Sample()};};
+
+    default void m17(){};
+    default void m18(int i){};
+    default void m19(int []i){};
+    default void m20(String i){};
+    default void m21(String[] i){};
+    default void m22(Sample i){};
+    default void m23(Sample[] i){};
+
+    default void m24() throws ArithmeticException{};
+    default void m25() throws ArithmeticException,ClassNotFoundException{};
+
+    public strictfp default int m25(String s) throws InterruptedException{return 5;}
+    
+
+    
+}
+
+
+18) We can not declare a method in interface as both default 
+
+    Compiler will throw error : illegal combination of modifiers : abstract and default 
+    interface Example5{
+        // default abstract void m27(){}; // CE: illegal combination of modifiers : abstract and default
+
+        // default abstract void m28(); // CE: illegal combination of modifiers : abstract and default
+
+    }
+
+19) In an interface we can create java.lang.Object class methods as abstract methods 
+    But we can not create java.lang.Object class methods as default methods 
+    compiler will throw error 
+     CE: default method equals in interface Example5 overrides a member of java.lang.Object
+
+    interface Example5{
+    public abstract int hashCode(); // as abstract method allowed
+
+    // public default boolean equals(Object obj){ // CE : as default method not allowed
+        // CE: default method equals in interface Example5 overrides a member of java.lang.Object
+    //     return true;
+    // }
+}
+
+20) Default methods are also called as defender methods.
