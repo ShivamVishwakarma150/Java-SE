@@ -1,0 +1,18 @@
+Need Of Collection Framework ?
+===============================
+
+Problems with Array
+-------------------
+1) type problem -> it can store only same type of object.
+
+2) size problem -> you have to define size before use it 
+
+3) it doesn't have inbuilt method.
+
+4) It cannot store object in another formate.
+
+5) It cannot store object in different order.
+    it follows insertion order.
+    it doesn't support any data structure.
+
+
