@@ -1,0 +1,80 @@
+Characteristics of CF :
+=======================
+
+1) Element : an object that is stored inside a collection is called element s1 s2 s3 s4 objects in collection/array object are called elements.
+
+2) Entry: The (key,value) pair in a Map is called an entry 
+    sno:101, sname:SK, course:CJ are entries
+
+3) Homogeneous objects: Same class objects are called homogenous objects s1 s2 s3 objects of Student class are homogeneous objects.
+
+4) Heterogeneous objects : Different class objects are called Heterogeneous objects s1 e1 acc1 objects of Student,Employee, BankAccount classes are Heterogeneous objects.
+
+5) Duplicate: Same class object with same data are called duplicate objects.
+
+    Student s1 = new Student(101,"SK");
+    Student s2 = new Student(101,"SK");
+    are duplicated objects,their data is same.
+
+6) Unique objects: Same class objects with different data are called unique objects.
+    Student s3 = new Student(102,"VK");
+    Student s4 = new Student(103,"PK");
+    are unique objects, these objects data is different.
+
+Different class objects are also considered as unique objects 
+        Student s1 = new Student(101,"SK");
+        Employee e1 = new Employee(101,"SK");
+    these two objects are diff class objects, so these objects are unique.
+
+
+7) Capacity : the number of objects can be stored in a collection is called Capacity.
+
+8) Initial Capacity : the Capacity with which this collection is created initially is called initial Capacity.
+
+    new ArrayList(); -> initial Capacity is 10, means it is created with 10 locations to store 10 objects 
+
+    new ArrayList(20); -> initial Capacity is 20, means it is created with 10 locations to store 20 objects
+
+
+9) Incremental Capacity : When collection is filled, how much capacity it must grow is called Incremental Capacity 
+
+    new ArrayList(); initial capacity=10, Incremental capacity=half, new capacity=15
+
+    new ArrayList(20); initial capacity=20, Incremental capacity=half, new capacity=30
+    
+    new ArrayList(0); initial capacity=0, Incremental capacity=1, new capacity=1
+
+    If Initial capacity=0/1 then => Incremental capacity+1
+
+10) size: the number of objects/elements stored in this collection is called size.
+    new ArrayList(); capacity:10 size:0 
+
+    ArrayList al = new ArrayList();
+    al.add(10);
+    al.add(20);
+    al.add(30);
+            Capacity: 10
+            size: 3
+
+    ArrayList al = new ArrayList(3); initial Capacity:3 size:0
+    al.add(10);
+    al.add(20);
+    al.add(30);
+    al.add(40);
+            new Capacity: 4 (oldCap+oldCap/2)
+            size: 4           
+    al.add(50);
+            new Capacity: 6 (oldCap+oldCap/2)
+            size: 5
+
+    al.add("a");
+            capacity:6
+            size:6
+
+    al.add("B");
+            capacity:9
+            size:7
+
+            
+
+    
