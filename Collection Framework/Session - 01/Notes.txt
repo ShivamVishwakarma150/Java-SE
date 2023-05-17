@@ -1,5 +1,34 @@
+Q1) What is framework?
+- A Semi developed project that has set of reusable classes and interfaces those work together to perform same operations common to all projects and those classes can be customized as per our requirement, then we can call it as framework.
+
+- For example 
+    - Spring is a framework
+        - It is a project, it has set of classes and interfaces to develop all types of Java applications standalone, web and enterprise applications, and we can customize those classes according to our project development.
+
+    - Hibernate is a framework [ or ORM tool]
+        - It is a project, it has set of reusable classes and interfaces to develop Persistance applications to perform CRUD operations on any given DB common to all projects.
+
+
+- Collections chapter is also called as Collections framework because this chapter all classes and interfaces are reusable to perform the same operations collecting objects without size and type limitation common to all projects, also we are allowed to customize their operations as per our project requirement. So the Collections chapters all classes and interfaces together is called as collections framework.
+
+
+- We do not class String API, IOStreams API, Network API, classes and interfaces as framework, because we can not customize them according to our project.
+
+- We can call Thread API, Runnable, Thread, Callable, Executors and other supporting classes and interfaces all together as framework as Executor framework, because we can reuse and we can customize those classes as per our project requirement.
+
+
+Q) What is collections framework?
+- A set of classes and interfaces those work together to perform the same operation that is collecting object. means storing objects ans one group, is called collections framework.
+
+
+
+
 Need Of Collection Framework ?
 ===============================
+- The Collections framework is used when we need to store multiple objects as one group without type and size limitations in different formats and different orders we will use collections framework.
+
+
+
 
 Problems with Array
 -------------------
