@@ -1,0 +1,236 @@
+1. What is collection?
+2. Why collection?
+3. Real time examples on collection?
+4. collection usage in MVC architecture?
+5. Common terminology used in collections programming?
+6. 9 diff operations we can perform on collection?
+7. 5 Problems of array?
+8. How to solve type Problem?
+9. How to solve remaining 4 problems?
+10. How many classes we must define?
+11. What is the collection  class structure?
+
+    class <CollectionName> {
+        
+        private Object[] objArray;
+
+        constructor 
+            for creating object array with initialCapacity and assigned to objArray
+
+        method for adding 
+            - storing in index formate
+            - storing in table formate 
+            - storing in diff order
+
+            Without size limitation
+            with growable array algorithm
+        
+        additional method
+            - counting 
+            - printing 
+            - searching 
+            - retrieving 
+            - removing 
+            - replacing 
+            - inserting 
+            - sorting 
+    }
+
+
+12. Diff collections define by SUN given in java.util package from Java 1.0v to Java 19v and their pros and cons?
+
+
+
+Collection Framework
+    1. Collection<Element Type>
+    2. Map 
+
+Single Letter generic parameter name 
+E -> Element
+K -> Key 
+V -> Value 
+T -> Type 
+U -> second parameter type 
+R -> Return Type 
+
+
+
+
+
+1.4v 
+=====
+class A {                       
+    String s;
+
+    void m1(String s){
+
+    }
+    String m2(){
+
+    }
+} 
+
+
+A a1 = new A(); // A class object works with String 
+a1.m1("a"); //allowed 
+a1.m1(5);//CE 
+
+A a2 = new A(); // A class object works with String
+
+A a3 = new A(); // A class object works with String  
+
+
+
+
+
+
+
+1.5v
+=====
+class A<T> {
+    T s;
+
+    void m1(T s){
+
+    }
+    T m2(){
+        
+    }
+} 
+
+A a1 = new A(); //allowed, but we will get a NOTE
+// A class object1 works with java.lang.Object
+a1.m1("a");//allowed 
+a1.m1(5);//allowed 
+
+
+A<String> a2 = new A<String>();
+// A class object2 works with java.lang.String
+a2.m1("a"); //allowed 
+a2.m1(5);//CE 
+
+A<Integer> a3 = new A<>();//1.7v
+// A class object3 works with java.lang.Integer
+a3.m1("A");//CE 
+a3.m1(5);//allowed
+
+
+
+
+14. Collection Framework 
+
+    1. Collection<E> 
+        - for storing objects without mapping 
+        - for storing objects in array formate
+
+        - here E stands for Element
+        - here E is choose as generic type name because the objects stored in collection is called Element.  
+    
+    2. Map<K,V>  
+        - for storing objects with mappings
+        - for storing objects in (key,value) table formate 
+
+        - here K,V are chosen as generic type names because the objects stored in Map are called as Key and value.
+
+    Collection<E> is divided into three types 
+        1. List<E>      - for storing multiple objects including duplicates in insertion order with index.
+
+            1) Vector - synchronized way (thread safety) 
+            2) ArrayList - no synchronization (no thread safety)
+            3) LinkedList- more operations are insert and remove at begin and in middle 
+            4) Stack - retrieving objects in LIFO order 
+
+        2. Set<E>       - for storing only unique objects. It does not have index and does not maintain insertion order.
+            1) HashSet - for store only unique objects in hash code order 
+            2) LinkedHashSet - for store only unique objects in insertion order 
+            3) EnumSet - for storing only one enum's named constants
+          Sorted Set <------ NavigableSet  
+            4) TreeSet - must store only unique objects in sorting order .
+            
+        3. Queue<E>     - for storing objects in FIFO orders, it also supports LIFO order.
+            1)PriorityQueue - for Storing objects in FIFO order, also supports LIFO order 
+         Dequeue<E> 
+            2) ArrayDequeue - for storing and retrieving object in FIFO at both ends.
+
+
+Map<K,V> implementation classes - for storing objects with mappings
+
+    1. HashMap -> for storing only unique entries in key object hash code order based on state/reference.
+    2. LinkedHashMap -> for storing only unique entries in insertion order 
+    3. EnumMap -> for storing an enum's named constants as keys 
+    4. IdentityHashMap -> for storing entries on key's hashCode based on their reference
+    5. WeakHashMap -> for storing entries on key's hashcode with weak references.
+    6. Hashtable -> for storing entries with thread safety in key's hashcode order 
+    7. Properties -> for storing Properties permanently in a file 
+
+SortedMap <-----NavigableMap
+    7. TreeMap -> for storing entries on keys sorting order
+
+
+
+
+
+Core Interfaces (10)
+    1. Collection<E>
+    2. List<E>
+    3. Set<E>
+    4. SortedSet<E>
+    5. NavigableSet<E>
+    6. Queue<E>
+    7. Dequeue<E>
+    8. Map<K,V>
+    9. SortedMap<K,V>
+    10. NavigableMap<K,V>
+
+Concrete implementation(18)
+    1. Vector<E>
+    2. ArrayList<E>
+    3. LinkedList<E>
+    4. Stack<E>
+
+    5. HashSet<E>
+    6. LinkedHashSet<E>
+    7. EnumSet<E extends Enum>
+    8. TreeSet<E>
+
+    9. PriorityQueue<E>
+    10. ArrayDequeue<E>
+
+    11. Hashtable<K,V>
+    12. HashMap<K,V>
+    13. LinkedHashMap<K,V>
+    14. WeakHashMap<K,V>
+    15. IdentityHashMap<K,V>
+    16. Properties
+    17. EnumMap<K extends Enum,V>
+    18. TreeMap<K,V>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
