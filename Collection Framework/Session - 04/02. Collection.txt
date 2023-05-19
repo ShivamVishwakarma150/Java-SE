@@ -1,0 +1,82 @@
+1) A Collection is a root interface of collection hierarchy
+
+2) It is available from 1.2v.
+
+3) When need to store objects in array format without mappings we must use Collection hierarchy implementation classes.
+
+Note: There is no meaning of synchronization in interfaces.
+
+4) Some of the collections are ordered and other collections are unordered some of the collections are unique and other collections are duplicate.
+
+5) It does not have direct implementations. Collection is implemented by three sub types: Set, List and Queue
+  
+6) Set is an unordered collection. It is used for storing only unique objects.
+
+7) List is ordered collection. It is used for storing objects including duplicates.
+
+8) Queue is used for storing objects in FIFO or LIFO.
+
+9) Collection<E> interface method (15 + 5 + 1)
+	1) public boolean isEmpty()
+	
+	2) public boolean add(E e)
+
+    ? -> represents any object
+	3) public boolean addAll(Collection<? extends E> c) 
+	
+	4) public boolean contains(E e)
+	5) public boolean containsAll(Collection<? extends E> c)
+	
+	6) public boolean remove(E e)
+	7) public boolean removeAll(Collection<? extends E> c)
+	8) public void clear()
+	
+	9) public boolean retainAll(Collection<? extends E> c)
+	
+	10) public int size()
+	
+	11) public Iterator iterator() 
+	
+	12) public int hashCode()
+	13) public boolean equals(Object obj)
+	
+	14) public Object[] toArray() 	
+	15) public Object[] toArray(Object[] obj) 	
+	
+
+
+	 + Java 8v new methods	 
+	16) public default void forEach(Consumer<? super T> action)
+	17) public default Stream<E> stream()  
+	18) public default Stream<E> parallelStream()  
+	19) public default Spliterator<E> spliterator()	
+	
+	20) public default boolean removeIf(Predicate<? super E> filter)
+	
+	+ Java 11v 
+	21) public default <T> T[] toArray(IntFunction<T[]> generator)
+	
+	
+	
+	
+
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+
+
+
+
+		
+		     
+
+
+
+		 

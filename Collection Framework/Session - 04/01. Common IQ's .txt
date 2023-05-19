@@ -1,0 +1,15 @@
+1) What is _____? 
+2) In which ______ it is defined?
+3) When we must use _______?
+4) Is it synchronized or not?
+5) Is it ordered collection or not?
+
+6) What is implemented data structure?
+7) What is the default capacity, incremental capacity?
+8) What type of elements are allowed to store?
+9) Is null allowed , how many?
+
+10)In which order elements are stored?
+11)In which order elements are retrieved?
+
+12)Implicitly calling methods and those are executing from adding object class?   
