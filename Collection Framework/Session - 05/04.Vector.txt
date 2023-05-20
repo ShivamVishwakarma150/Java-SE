@@ -1,0 +1,202 @@
+Vector class points:
+=======================================================
+public class Vector<E> extends AbstractList<E> 
+				implements List, (RandomAccess, Serializable, Cloneable) Marker interface 
+				
+1) Vector is a legacy collection. 
+2) It is defined in Java 1.0v 
+ 	In Java 1.2v, it is add in Collection hierarchy as an implementation of List interface.
+
+3) When we need to store multiple objects with index  including duplicates in multithreaded application with thread safety we must choose Vector.
+	
+4) Yes, Vector is synchronized collection
+5) Yes, Vector is ordered collection. 
+	It maintains Insertion Order with index
+	 
+6) Vector implemented data structure is growable array.
+7) Vector object default capacity is 10
+   and its default capacityIncremental is double (Or) +1
+
+8) Vector allows us to store all 4 types of elements
+	H, H, U and D
+    Homogeneous
+    Heterogenous
+    Unique
+    Duplicate
+
+
+9) Vector allows us store to null, multiple nulls are allowed
+
+10) Vector stores maintains elements in Insertion Order
+11) Vector allows to retrieve elements in both random and sequential order
+	
+12) In search and remove operations, it implicitly calls equals() method and it is executed from searching or removing object class or from its super class Object.	 	
+
+Vector class constructors
+==========================
+	1) public Vector() 
+	2) public Vector(Collection<? extends E> c)
+	3) public Vector(int initialCapacity) 
+	4) public Vector(int initialCapacity, int capacityIncremental) 
+
+Vector class methods
+==========================
+In addition to Collection and List interface methods
+Vector class has its own methods, because 
+it is a legacy collection.
+
+ 	01. public synchronized boolean isEmpty()
+	
+	02. public synchronized void addElement(Object o)
+	03. public synchronized boolean contains(Object obj)
+	
+	04. public synchronized Object elementAt(int index)
+	05. public Enumeration elements()
+	
+	06. public synchronized boolean removeElement(Object o)
+	07. public synchronized void removeElementAt(int index)
+	08. protected synchronized void removeRange(int sindex, int eindex)
+	09. public synchronized void removeAllElements()
+	
+	10. public synchronized void setElementAt(Object o, int index)
+	11. public synchronized void insertElementAt(Object o, int index)
+	12. public synchronized int size()
+	
+	13. public synchronized int capacity()
+	14. public synchronized void ensureCapacity(int capacity)
+	15. public synchronized void trimToSize()
+	16. public synchronized void setSize(int size)
+	
+	17. public synchronized void copyInto(Object[] obj)
+	
+	18. public synchronized Object clone()
+		
+		
+Sample program
+==============
+
+import java.util.Vector;
+
+public class Test01_Vector {
+	public static void main(String[] args) {
+		
+		Vector<Object> v1 = new Vector<>();
+		System.out.println(v1.capacity());
+		System.out.println(v1.size());
+		System.out.println(v1); 
+		System.out.println();		
+		
+		v1.add("a");
+		v1.add("b");
+		v1.add(5);
+		v1.add(6.7);
+		v1.add('p');
+		v1.add(true);
+		v1.add("a");
+		v1.add(5);
+		v1.add(6.7);
+		v1.add(true);
+
+		System.out.println(v1.capacity());
+		System.out.println(v1.size());
+		System.out.println(v1);
+		System.out.println();
+		
+		v1.add(11);
+		
+		System.out.println(v1.capacity());
+		System.out.println(v1.size());
+		System.out.println(v1);
+		System.out.println();
+		
+		v1.add(null);
+		v1.add(null);
+		v1.add(null);
+		
+		System.out.println(v1.capacity());
+		System.out.println(v1.size());
+		System.out.println(v1);
+		System.out.println();
+		
+		v1.add(new A(5, 6));
+		v1.add(new A(5, 6));
+		
+		System.out.println(v1.capacity());
+		System.out.println(v1.size());
+		System.out.println(v1);
+		System.out.println();
+		
+		System.out.println(v1.get(3));
+		System.out.println();
+		for(int i=0; i<v1.size(); i++) {
+			System.out.println(v1.get(i));
+		}
+		System.out.println();
+		
+		System.out.println(v1.contains("a"));
+		System.out.println(v1.contains(new String("a")));
+		System.out.println(v1.contains("A"));
+		System.out.print("       ");
+		System.out.println(v1);
+		System.out.print(v1.remove("a")+"   ");	
+		System.out.println(v1);
+		System.out.print(v1.remove(new String("a"))+ "   ");
+		System.out.println(v1);
+		System.out.print(v1.remove("A") +"  ");
+		System.out.println(v1);
+
+		System.out.print(v1.remove(11) +"   ");
+		System.out.println(v1);
+		System.out.print(v1.remove((Integer)11) +"   ");
+		System.out.println(v1);
+		System.out.print(v1.remove(6.7) +"   ");
+		System.out.println(v1);
+		//System.out.print(v1.remove('p') +"   ");
+		System.out.print(v1.remove((Character)'p') +"   ");
+		System.out.println(v1);
+		System.out.println();
+
+		System.out.println(v1.contains(new A(5,6))); 
+		System.out.println(v1.remove(new A(5,6))); 
+	}
+}
+
+
+
+public class A {
+
+	private int x;
+	private int y;
+
+	public A(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+	@Override
+	public String toString() {
+		return "A("+x + ", " + y+")";
+	}
+
+}
+		
+
+
+
+

@@ -1,0 +1,79 @@
+1) A List is sequence of elements. 
+2) It is a sub interface of Collection interface. 
+3) It is also available from 1.2v.
+4) When need to store objects in array format without mappings 
+   with index including duplicates we must choose List implemented classes.
+
+5) List has 4 implemented classes:- Vector, ArrayList, LinkedList, Stack 
+					
+								Iterable<T>		    Note: We must not consider   
+									/					Iterable as root/super
+							Collection<E>				interface of all collections
+						   /	/|\						because it does not provide
+				          /	   List<E>					methods for collecting.
+			             /		/|\
+		  AbstractCollection<E>  |
+							 \	 |		
+							AbstractList<E>			it provides methods only for
+						   /     |		 \				for iterating over collection
+						  /		 | 	      \				and retrieving elements from
+						 /       |         \ 			collection.
+					Vector<E> ArrayList<E> LinkedList<E> 
+					   |    \   /
+					   |	RandomAccess		Serializable 					
+				    Stack<E>					Cloneable
+				   	 
+8) List is ordered collection. 
+9) It is used for storing objects including duplicates with index.
+10) Because List is indexed based, the user of this interface has 
+    precise control over where in the list each element is inserted. 
+    The user can access elements by their integer index (position in the list), 
+    and search for elements in the list.   
+
+11) List<E> interface methods (21 + 10 + 2 + 12 + 1) => (46)
+	1) public void add(int index, E e)
+	2) public boolean addAll(int index, Collection<? extends E> c)
+	
+    3) public E get(int index)
+	4) public E set(int index, Object obj)
+	5) public E remove(int index)
+	
+	6) public int indexOf(E e)
+	7) public int lastIndexOf(E e)
+	
+	8) public List<E> subList(int start, int end)
+	
+	9) public ListIterator<E> listIterator();
+	10)public ListIterator<E> listIterator(int index);		
+	
+					+
+			Java 8v new methods
+	11) public default void replaceAll(UnaryOperator<E> operator)
+	12) public default void sort(Comparator<? super E> c)
+	
+			Java 9v new methods
+	13) public static <E> List<E> of();
+	14) public static <E> List<E> of(E);
+	15) public static <E> List<E> of(E, E);
+	16) public static <E> List<E> of(E, E, E);
+	17) public static <E> List<E> of(E, E, E, E);
+	18) public static <E> List<E> of(E, E, E, E, E);
+	19) public static <E> List<E> of(E, E, E, E, E, E);
+	20) public static <E> List<E> of(E, E, E, E, E, E, E);
+	21) public static <E> List<E> of(E, E, E, E, E, E, E, E);
+	22) public static <E> List<E> of(E, E, E, E, E, E, E, E, E);
+	23) public static <E> List<E> of(E, E, E, E, E, E, E, E, E, E);
+	24) public static <E> List<E> of(E... e1)
+	
+			Java 11v new method
+	25) public static <E> List<E> copyOf(Collection<? extends E>);
+
+
+
+
+		
+		     
+
+
+
+		 
