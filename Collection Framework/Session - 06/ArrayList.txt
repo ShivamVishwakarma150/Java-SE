@@ -69,16 +69,16 @@ Different operations we can perform on AL/any collection
 		(we must override equals() method in	-> al1.indexOf(o)	-> index/-1
 			this searching object class)		-> al1.lastIndexOf(o)							
 			
-	   searching muliple elements in collection	-> al1.containsAll(col)
+	   searching multiple elements in collection	-> al1.containsAll(col)
 											//new kw, List.of(-), Arrays.asList(-)			
 																				
 
 	7) removing one element from collection	-> al1.remove(index) -> b/s/c/i
 												-> al1.remove(object) ->B/S/C/I/f/d/b/[]/obj	
 												
-	   removing muliple elements from collection-> al1.removeAll(col) //3 ways of creating collections
+	   removing multiple elements from collection-> al1.removeAll(col) //3 ways of creating collections
 													al1.removeIf(Predicate)		
-	   removing all elemement					-> al1.clear()
+	   removing all element					-> al1.clear()
 
 	8) inserting element						-> al1.add(index, o)
 	9) replacing element						-> al1.set(index, o)
@@ -86,8 +86,6 @@ Different operations we can perform on AL/any collection
 
 
 //Program
-package com.nit.hk.suncollections;
-
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
