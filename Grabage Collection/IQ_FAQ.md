@@ -59,3 +59,4 @@
 
 20. Can you disable the Garbage Collector in Java? If yes, should you do it?
     - No, you cannot disable the Garbage Collector in Java. The Garbage Collector is an integral part of Java's automatic memory management system. Disabling it would lead to memory leaks and eventually result in out-of-memory errors. It is not recommended to disable the Garbage Collector in Java.
+  
