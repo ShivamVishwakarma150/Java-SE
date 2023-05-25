@@ -1,0 +1,75 @@
+Interview Questions
+
+By the end of this chapter you answer all below interview questions Package Keyword Interview Questions
+
+1. What is a package & sub package?
+2. What is the use of package & sub package?
+3. What is the syntax to create package & sub package?
+4. What is the difference between?
+	1) package p1; 
+	2) package p1.p2;
+5. What is the folder structure created for below package statement?
+	1) package p1.p2.p3; 	
+6. Are there any rules in creating package?
+	1) Can we place package statement anywhere in the source file? 
+	Ans: There can be only one package statement in each source file.
+
+	2) Can we place more than one package statement in a source file?
+	3) Are all 7 identifier rules applied on package name?
+	4) Can we start package name with a digit? 
+	5) Can we start package name with $ (or) (or) letter?
+	6) Can we place space in package name?
+	7) What is the special character allowed in package name? 
+	8) What is the functionality of in package name?
+	9) Can we use a digit (or) a number in a package name?
+	10) Can we use a digit (or) a number in a package name?
+	11) What are the changes adding in Java 9v w.r.t to package name?
+	12) Can we use single _ as a package name, if no, from which version onwards?
+	13) Can we jdk predefined package names as user defined package name?
+7. What is coding standard and naming conversion we follow in creating package name? 
+8. Will package keyword create package folder in hard disk automatically, what will it do?
+9. When should we call a folder is a package? 
+10. What is the use of -d option of javac tool?
+11. What is use of "." while compiling a java file with "-d" option? 
+12. What is the complete syntax of javac command for creating package folder?
+13. What is the right syntax to compile and execute a packaged class?
+14. What is the difference between?
+	1) javac Example.java
+	2) javac —d Example.java
+	3) javac -d C:\test Example.java
+15. What is the difference between
+	1) java Example
+	2) java p1.Example
+16. What is the rule in compiling Example.java file with C:\test option?
+17. What is the enhancement we got in Java 9v w.r.t to -d option?
+18. If java file does not have package statement, will -d option throws any error?
+19. How can we access a packaged class which is available in different directory?
+20. What are the different ways we can set classpath?
+21. What is the difference in below options in setting classpath?
+21. What is the difference in below options in setting classpath?
+	1) java option-cp or-classpath or --class-path
+	2) set classpath
+	3) permanent settings.
+22. What is the point we must remember in setting classpath via set classpath/via env var?
+23. What is the importance of "." in classpath variable?
+24. What is difference in placing; in the middle of the classpath & at end of the classpath?
+25. What is difference in placing single; and multiple ;s in the middle of the classpath?
+26. Assume we have placed p1.Example.class file in Current working directory & in C:\test folder, then identify from which folder compiler & JVM loads Example.class file in the below
+classpath settings
+Loaded from which folder?
+	1) set classpath=C:\test
+	2) set classpath=.
+	3) set classpath=;C:\test
+	4) set classpath=C:\test;.
+	5) set classpath=NareshIT;C:\test
+	6) set classpath= NareshIT;;C:\test
+	7) set classpath-NareshiT;C:\test;
+	8) set classpath=NareshIT
+	9) set classpath=NareshIT;
+
+27. Assume we have created two java files with different names, but inside those java files we have classes with the same name and without package statement. After compiling java files how many .class files are existed in the current working directory and what is the output we get when we run first class after second java file compilation?
+28. In the above scenario how can we have both .class files?
+29. We know that pubic class name & its java file name should be same, then how can we create two java files with same public class name?
+30. When should we create package manually and programmatically?
+31. What is project design we must save java files and .class files for easy maintenance? 32. Why package keyword will not create package folder automatically without using "-d"?
+33. How can we create two different public classes with same name in same package?

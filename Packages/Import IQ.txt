@@ -1,0 +1,18 @@
+Import Keyword Interview Questions
+
+34. How can we access one package classes from other package classes?
+35. What is the difference between fully qualified name & import statement?
+36. Can we place import statement anywhere in the source file?
+37. Can we place multiple import statements for diff classes and diff packages?
+38. Can we place multiple import statements for the same class?
+39. What is the meaning of class naming conflict, how can we solve it?
+40. When should we use both import statement & fully qualified name of a class?
+41. What is the difference between
+	1) import p1.*;
+	2) import p1.A;
+42. Why "import p1.A;" syntax is recommended in project?
+43. If we place "import p1.A;" can we create a "class A()" in the current source file?
+44. Assume in the current package p1 & imported package p2 we have "A.class", then for the
+below import statements from which package "A.class" is loaded
+	3) for import p1."; →
+	4) for import p1.A: →
