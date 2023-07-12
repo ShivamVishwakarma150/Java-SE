@@ -1,0 +1,23 @@
+# Very Important Points about ListItearator
+
+• ListIterator in Java provides an add(E e) method which
+is not there in Iterator. The method add(E e) inserts the
+specified element into the list (optional operation).
+
+• The element is inserted immediately before the
+element that would be returned by next(), if any, and after
+the element that would be returned by previous(), if any.
+
+• ListItearator also provides a method called set(E e)
+which replaces the last element returned by next() or
+previous() with the specified element (optional
+operation).
+
+• But, this call can be made only if neither remove() nor
+add(E) have been called after the last call to next() or
+previous().
+
+• ListItearator is fail-fast and throws a
+ConcurrentModificationException if the underlying
+collection is structurally modified in any way except
+through the iterator's own remove() or add() methods.# 
