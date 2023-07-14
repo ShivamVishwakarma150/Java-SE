@@ -20,6 +20,7 @@
 
 By using the `Comparator` interface, we have the flexibility to define custom sorting logic for our user-defined classes. This allows us to sort objects based on specific criteria that may not be covered by their natural ordering or when comparing objects of different types.
 
+![Alt text](image.png)
 
 **Exercise 1: Sort Integers in Descending Order using TreeSet**
 ```java
