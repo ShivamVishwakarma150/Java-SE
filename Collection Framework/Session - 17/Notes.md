@@ -203,3 +203,51 @@ This implementation follows the recommended steps for overriding the `equals()` 
 5. Comparison of individual attributes (`age` and `name`).
 
 By providing a custom implementation of the `equals()` method, objects of the `Person` class can be compared for equality based on their age and name attributes.
+
+<br/>
+<br/>
+<br/>
+
+# Important Points to remember while overriding the method `compareTo( )`
+
+
+1. **`compareTo()` must throw `NullPointerException` when compared to `null`:**
+   - The `compareTo()` method should throw a `NullPointerException` if the current object is compared to a `null` object. This is different from the `equals()` method, which simply returns `false` in such a scenario.
+
+2. **Order of comparison in `compareTo()`:**
+   - When comparing objects using the `compareTo()` method, the order of comparison matters. If there are multiple significant fields to compare, it's recommended to start with the most significant field and proceed to the least significant field.
+
+3. **Difference between `compareTo()` and `equals()`:**
+   - The `compareTo()` method is used for comparison, and the order of comparison matters. In contrast, the `equals()` method is used for equality checks, and the order of comparison does not matter.
+
+4. **Overriding `hashCode()` when overriding both `equals()` and `compareTo()`:**
+   - When overriding both the `equals()` and `compareTo()` methods, it is necessary to override the `hashCode()` method as well. Failure to do so can result in a violation of the general contract for `Object.hashCode()`, causing issues with hash-based collections like `HashMap`, `HashSet`, and `Hashtable`.
+
+5. **Implications on hash-based collections:**
+   - If only the `equals()` method is overridden, objects that are considered equal but have different hash codes will not be properly recognized by hash-based collections. They may end up in different buckets, leading to unexpected behavior.
+
+6. **Correct implementation of `hashCode()`:**
+   - The `hashCode()` method is crucial when using objects in hash-based collection classes like `Hashtable` and `HashMap`.
+   - A well-written `hashCode()` method distributes objects uniformly and avoids collisions, improving the performance of hash-based collections.
+
+By considering these points while overriding the `compareTo()` method and understanding its relationship with the `equals()` method and `hashCode()`, we can ensure consistent and correct behavior when working with comparisons and hash-based collections.
+
+<br/>
+<br/>
+
+# How can we change natural sort order ?
+
+**1. If we are not satisfied with the default natural sorting order:**
+   - The default natural sorting order is provided by the `Comparable` interface, where objects are sorted based on their natural ordering.
+   - If we want to change the sorting order, such as sorting strings in descending order instead of ascending order, or if the default natural sorting is not available (like for `StringBuffer`), we can use the `Comparator` interface.
+
+**2. Using `java.util.Comparator` for customized sorting:**
+   - The `Comparator` interface allows us to define our own customized sorting logic for objects.
+   - We can create a separate class that implements the `Comparator` interface and override the `compare()` method.
+   - In the `compare()` method, we define the comparison logic based on our desired sorting criteria.
+   - We return a negative integer if the first object is considered "less than" the second object, a positive integer if the first object is considered "greater than" the second object, and 0 if the two objects are considered equal.
+   - By using the `Comparator`, we can specify the exact order in which objects should be sorted, regardless of their default natural ordering.
+
+In summary, the `Comparable` interface is used for default natural sorting, where objects are sorted based on their natural ordering. On the other hand, the `Comparator` interface allows us to define our own customized sorting logic for objects, enabling us to change the natural sort order or handle classes that don't have a default natural ordering.
+
+By understanding and utilizing these interfaces effectively, we have the flexibility to achieve the desired sorting behavior in our applications.
