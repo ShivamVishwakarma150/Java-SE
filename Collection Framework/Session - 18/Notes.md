@@ -149,3 +149,26 @@ public class PersonNameSort {
     }
 }
 ```
+
+<br/>
+<br/>
+
+# Comparable V/s Comparator
+
+|                  | Comparable                                            | Comparator                                            |
+|------------------|-------------------------------------------------------|-------------------------------------------------------|
+| Purpose          | Defines the default natural sorting order of a class   | Defines a custom sorting order for a class             |
+| Interface        | Implemented by the class itself                        | Implemented separately as a separate class or inline   |
+| Method           | compareTo()                                           | compare()                                              |
+| Sorting Order    | Single sorting sequence                                | Multiple sorting sequences                             |
+| Usage            | For predefined classes or custom classes' default order| When a different sorting order is desired              |
+| Modification     | Requires modifying the class itself                     | No modification to the class is required               |
+| Flexibility      | Limited flexibility, default order cannot be changed   | Greater flexibility, can define multiple sorting orders|
+| Control          | Less control over sorting behavior                     | More control over sorting behavior                     |
+| Class Dependency | Relies on the class implementing the Comparable        | Independent of the class being sorted                  |
+
+The Comparable interface is used to define the default natural sorting order for a class, and it is implemented by the class itself. It provides a single sorting sequence and requires modifying the class itself to change the sorting order. It is typically used for predefined classes or when defining the default sorting order for custom classes.
+
+On the other hand, the Comparator interface is used to define a custom sorting order for a class. It is implemented separately as a separate class or inline, providing more flexibility in defining multiple sorting sequences. It does not require modifying the class being sorted and offers greater control over the sorting behavior.
+
+The choice between Comparable and Comparator depends on the specific requirements and whether the default sorting order needs to be modified or a custom sorting order needs to be defined.
